@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Set A Coupon ?"  icon-name="custom">
+        <div class = "slds-m-around_medium"></div>
+    <lightning-radio-group
+        name = "Select or Create a Coupon"
+        label="Select or Create a Coupon"
+        options={options}
+        type="radio">
+    </lightning-radio-group>
+    <lightning-datatable data={data} columns={columns} key-field="id"></lightning-datatable>
+    <lightning-button label = "Create New Coupon"
+         onclick={NavigateTochild} variant="success">
+        </lightning-button>
+    <div class="slds-clearfix">
+        <div class="slds-float_right">
+            <lightning-button label="Cancel"></lightning-button>
+            <lightning-button label="Save"></lightning-button>
+        </div>
+    </div>
+</lightning-card>
+</template>

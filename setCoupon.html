@@ -1,0 +1,64 @@
+<template>
+    <lightning-card title="Create New Coupon">
+        <div class="slds-m-around_medium">
+            <lightning-input required
+                             label="Coupon Name"
+                            value={name}
+                            onchange={handleChange}
+                class="slds-m-bottom_x-small">
+            </lightning-input>
+            <lightning-radio-group name="radioGroup1"
+                                   label="Discount Type"
+                                   options={discountType}
+                                   value={radio1}
+                                   type="radio">
+            </lightning-radio-group>
+            <lightning-input label="Duration in Months"
+                             value={value2}
+                             onchange={handleChange}>
+            </lightning-input>
+            <lightning-radio-group name="radioGroup2"      
+                                   label="Set an expiration date for this Coupon ?"
+                                   options={expiryDate}
+                                   value={radio2}
+                                   onchange={handleChange1}
+                                   type="radio">
+            </lightning-radio-group>
+            <lightning-input if:true={fieldVisible}
+                             type="datetime"
+                             label="Enter Expiry Date"
+                             onchange={handleChange}>
+            </lightning-input>
+            <lightning-radio-group name="radioGroup3"
+                                   label="Limit the total number of times this coupon can be redeemed ?"
+                                   options={quantity}
+                                   value={radio3}
+                                   onchange={handleChange2}  
+                                   type="radio">
+            </lightning-radio-group>
+            <lightning-input if:true={field}
+                             type="number"
+                             label="Quantity of Coupon"
+                             onchange={handleChange}>
+            </lightning-input>
+            <div class="slds-clearfix">
+                <div class="slds-float_right">
+                    <lightning-button label="Cancel"></lightning-button>
+                    <lightning-button label="Create Coupon" variant="brand" onclick={createCoupon}></lightning-button>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
