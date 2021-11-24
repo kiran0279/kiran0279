@@ -1,0 +1,180 @@
+    <template>
+        <!--To display the Table....-->
+        <lightning-card title="Contacts Related To Account In Table Formate" icon-name="custom:custom63">
+        <template if:true={renderTable}>
+                <div class="tableDiv">
+                    <div class={tableStyle}>
+                        <table aria-describedby="conatact-list" class="slds-table  slds-table_bordered ">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="slds-size_1-of-6 " scope="col">
+                        <div class="slds-truncate " title="First Name">First Name</div>
+                    </th>
+                    <th class="slds-size_1-of-6 " scope="col">
+                        <div class="slds-truncate " title="Last Name">Last Name</div>
+                    </th>
+                    <th class="slds-size_1-of-6 " scope="col">
+                        <div class="slds-truncate " title="Email">Email</div>
+                    </th>
+                    <th class="slds-size_1-of-6" scope="col">
+                        <div class="slds-truncate " title="Phone">Phone
+                        </div>
+                    </th>
+                    <th class="slds-size_1-of-6" scope="col">
+                        <div class="slds-truncate " title="Mobile">Mobile
+                        </div>
+                    </th>
+                    <th class="slds-size_1-of-6" scope="col">
+                        <div class="slds-truncate " title="edit">edit</div>
+                    </th>
+                    <th class="slds-size_1-of-6" scope="col">
+                        <div class="slds-truncate " title="delete">delete</div>
+                    </th>
+                </tr>
+            </thead>
+        <tbody >
+            <template for:each={contactList} for:item="item" for:index="indexVar">
+                <tr key={item.Id} class="slds-hint-parent" >
+                    <td class="slds-size_1-of-6">
+                        <!--Code to display the fields in table only when edit button not clicked -->
+                        <template if:false={item.isEdit}>
+                            {item.FirstName}
+                        </template>
+                        <!--Code to display the input boxes after clicking the edit icon-->
+                    <template if:true={item.isEdit}>
+                            <lightning-input key={item.key}
+                            type="text"
+                            data-recid={item.Id}
+                            name="input1"
+                            label="FirstName"
+                            value={item.FirstName}
+                            onchange={update}
+                            variant="label-hidden" >
+                            </lightning-input>
+                        </template>
+                    </td>
+                    <!--Code to display the fields in table only when edit button not clicked -->
+                    <td class="slds-size_1-of-6">
+                        <template if:false={item.isEdit}>
+                            {item.LastName}
+                        </template>
+                         <!--Code to display the input boxes after clicking the edit icon-->
+                    <template if:true={item.isEdit}>
+                            <lightning-input key={item.key}
+                            type="text"
+                            data-recid={item.Id}
+                            name="input2"
+                            label="LastName"
+                            value={item.LastName}
+                            onchange={update}
+                            variant="label-hidden" >
+                            </lightning-input>
+                    </template> 
+                    </td>
+                    <!--Code to display the fields in table only when edit button not clicked -->
+                    <td class="slds-size_1-of-6">
+                        <template if:false={item.isEdit}>
+                            {item.Email}
+                        </template>
+                         <!--Code to display the input boxes after clicking the edit icon-->
+                    <template if:true={item.isEdit}>
+                            <lightning-input key={item.key}
+                            type="email"
+                            data-recid={item.Id}
+                            name="input3"
+                            label="Email"
+                            value={item.Email}
+                            onchange={update}
+                            variant="label-hidden" >
+                            </lightning-input>
+                    </template>
+                    </td>
+                    <!--Code to display the fields in table only when edit button not clicked -->
+                    <td class="slds-size_1-of-6">
+                        <template if:false={item.isEdit}>
+                            {item.Phone}
+                        </template>
+                         <!--Code to display the input boxes after clicking the edit icon-->
+                        <template if:true={item.isEdit}>
+                            <lightning-input key={item.key}
+                            type="number"
+                            data-recid={item.Id}
+                            name="input4"
+                            label="Phone"
+                            value={item.Phone}
+                            onchange={update}
+                            variant="label-hidden">
+                            </lightning-input>
+                        </template>
+                    </td>
+                    <!--Code to display the fields in table only when edit button not clicked -->
+                    <td class="slds-size_1-of-6">
+                        <template if:false={item.isEdit}>
+                            {item.Mobile}
+                        </template>
+                         <!--Code to display the input boxes after clicking the edit icon-->
+                        <template if:true={item.isEdit}>
+                            <lightning-input key={item.key}
+                            type="number"
+                            data-recid={item.Id}
+                            name="input5"
+                            label="Mobile"
+                            value={item.Mobile}
+                            onchange={update}
+                            variant="label-hidden">
+                            </lightning-input>
+                        </template>
+                    </td>
+                    <!--Code for the edit icon -->
+                    <td  class="slds-size_1-of-6">
+                        <lightning-button-icon 
+                        data-recid={item.Id}
+                        onclick={editContact}
+                        icon-name="utility:edit"  
+                        variant="bare"
+                        alternative-text="edit">
+                        </lightning-button-icon>
+                    </td>
+                    <!--code for delete icon -->
+                    <td class="slds-size_1-of-6">
+                        <lightning-button-icon
+                        data-recid={item.Id}
+                        icon-name="utility:delete"    
+                        variant="bare"
+                        alternative-text="Delete" 
+                        onclick={deleteContact} 
+                        class="slds-m-left_xx-small"
+                        title="Delete">
+                        </lightning-button-icon>
+                    
+                    </td>
+                    <td>
+                
+                </td>
+                </tr>
+                
+            </template>
+            
+            </tbody>
+        </table>
+    </div>
+    </div>
+            </template>
+            <!--code for save button after clicking edit icon -->
+            <lightning-button if:true={field}
+            icon-name="utility:save"    
+            variant="button"
+            alternative-text="save" 
+            onclick={saverecord} 
+            class="slds-m-middle_xx-small"
+            title="save">
+            </lightning-button>
+             <!--code for cancel button after clicking edit icon -->
+            <lightning-button if:true={cfield}  
+            variant="button"
+            onclick={Cancel} 
+            label="Cancel">
+            </lightning-button>
+        </lightning-card>
+
+    </template>
