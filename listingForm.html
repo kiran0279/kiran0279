@@ -1,0 +1,207 @@
+    <template>
+      <lightning-accordion class="example-accordion" active-section-name="Information">
+        <lightning-card>
+            <lightning-accordion-section name="Information" label="Information">
+            <div class="slds-wrap slds-grid">
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-input required label="Listing Name"
+                          type="text"
+                          value={listingname}
+                          name="ListingName"
+                          onchange={handleChange}>
+                  </lightning-input>
+                </p>
+              </div>    
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-combobox required label="Status"
+                            options={Statusoptins}
+                            name="Status"
+                            onchange={handleChange}>
+                  </lightning-combobox>
+                </p>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-combobox required label="Category"
+                            options={categoryPL}
+                            name="Category"
+                            onchange={handleChange}>
+                  </lightning-combobox>
+                </p>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-input required label="Base Price"
+                          type="text"
+                          value={basePrice}
+                          name="basePrice"
+                          onchange={handleChange}>
+                  </lightning-input>
+                </p>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-combobox required label="Duration"
+                            options={Duroptions}
+                            name="Duration"
+                            onchange={handleChange}>
+                  </lightning-combobox>
+                </p>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-input label="Number Of Days"
+                          type="text"
+                          value={NumberofDays}
+                          name="NumberofDays"
+                          onchange={handleChange}>
+                  </lightning-input>
+                </p>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-input label="Street"
+                          type="text"
+                          value={Street}
+                          name="Street"
+                          onchange={handleChange}>
+                  </lightning-input>
+                </p>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-input required label="Price Per Person(Above minimum)"
+                          type="text"
+                          value={Priceperperson}
+                          name="Priceperperson"
+                          onchange={handleChange}>
+                  </lightning-input>
+                </p>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-input required label="City"
+                          type="text"
+                          value={City}
+                          name="City"
+                          onchange={handleChange}>
+                  </lightning-input>
+                </p>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-input required label="Guest Min Capacity"
+                          type="text"
+                          value={Guestmincapacity}
+                          name="Guestmincapacity"
+                          onchange={handleChange}>
+                  </lightning-input>
+                </p>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-combobox required label="State"
+                  options={Stateoptions}
+                  name="State"
+                  onchange={handleChange}>
+                  </lightning-combobox>
+                </p>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-input required label="Guest Max Capacity"
+                          type="text"
+                          value={capacity}
+                          name="Guestmaxcapacity"
+                          onchange={handleChange}>
+                  </lightning-input>
+                </p>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-input label="Zip/Postal Code"
+                          type="text"
+                          value={PostalCode}
+                          name="Zip/postalcode"
+                          onchange={handleChange}>
+                  </lightning-input>
+                </p>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-input label="Items To Bring"
+                          type="text"
+                          value={Items}
+                          name="Items"
+                          onchange={handleChange}>
+                  </lightning-input>
+                </p>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-input label="Country"
+                          type="text"
+                          value={Country}
+                          name="Country"
+                          onchange={handleChange}>
+                  </lightning-input>
+                </p>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <p>
+                  <lightning-input label="PickUp Location"
+                          type="text"
+                          value={location}
+                          name="pickuplocation"
+                          onchange={handleChange}>
+                  </lightning-input>
+                </p>
+              </div>
+              <br/> <br/>
+            </div>
+          </lightning-accordion-section>
+          </lightning-card>
+        <lightning-card>
+                  <lightning-accordion-section name="Fill Out" label="Fill Out">
+                      <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
+                        <lightning-input-rich-text required label="Description"
+                                                label-visible
+                                                value={Description}
+                                                onchange={getDetails}>
+                        </lightning-input-rich-text>
+                        <lightning-input-rich-text required label="Whats Include"
+                                                label-visible
+                                                value={Include}
+                                                onchange={getDetails}>
+                        </lightning-input-rich-text>
+                        <lightning-input-rich-text required label="Other Considerations"
+                                                label-visible
+                                                value={Other}
+                                                onchange={getDetails}>
+                        </lightning-input-rich-text>
+                        </div>
+                        </lightning-accordion-section>
+                </lightning-card>
+                <lightning-card>
+                  <lightning-accordion-section name="Attachment" label="Attachment">
+                    <lightning-input type="file"
+                                     onchange={onFileUpload} 
+                                     required name="uploadFile" 
+                                     label="Upload File">  
+                    </lightning-input>  
+            </lightning-accordion-section>
+              </lightning-card>
+        <lightning-card>
+          <div class="slds-clearfix">
+            <div class="slds-float_right">
+            <lightning-button variant="button" label="Save" onclick={submitDetails}></lightning-button>
+          </div>
+          <div class="slds-float_right">
+            <lightning-button variant="button" label="Reset" onclick={resetForm}></lightning-button>
+          </div>
+          </div>
+        </lightning-card>
+        </lightning-accordion>
+      </template>
