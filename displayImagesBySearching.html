@@ -1,0 +1,71 @@
+  <template>
+    <lightning-card>
+        <div class="slds-wrap slds-grid">
+            <div class="slds-col slds-size_6-of-12 slds-var-p-horizontal--small slds-m-bottom--medium">
+                <lightning-input label="Your Trip Location"
+                                 name="search"
+                                 class="strong-text"
+                                 value={value}
+                                 onchange={handleChange}
+                                placeholder="ex: Missoula, MT">
+                </lightning-input>
+            </div>
+        </div>
+        <lightning-card>
+            <div class="slds-var-m-around_medium">
+                <template if:true = {sid}>
+                <template for:each={visibleRecords} for:item="hai" for:index="index">
+                        <div key={hai.Id}>
+                            <lightning-layout>
+                                <lightning-layout-item>
+                                    <div class="slds-col slds-large-size_6-of-12 ">
+                                        <lightning-carousel auto-scroll if:true={hai.url}>
+                                           <template for:each={hai.url} for:item="url">
+                                               <lightning-carousel-image key={hai.Id} src={url}
+                                                              style="width: 360px;  height:150px;">
+                                               </lightning-carousel-image>
+                                           </template>
+                                        </lightning-carousel>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        <p>
+                            {hai.Name} <br/>
+                            {hai.state} <br/>
+                            {hai.Category} <br/>
+                            {hai.Duration} <br/>
+                            {hai.GuestMaxCapacity} <br/>
+                        </p>
+                    </div>
+                </template>
+                </template>
+                      <div slot="footer" class="slds-m-around_medium">
+                        <p class="slds-text-align_center">
+                            Displaying {start} to {end} of {totalRecCount} records.
+                            Page {currentPage} of {totalPage}. </p>
+                        <c-Display-Images-By-Searching-Child onprevious={previousHandler} onnext={nextHandler}></c-Display-Images-By-Searching-Child>
+                    </div> 
+            </div>
+        </lightning-card>
+        <lightning-button variant="brand"
+                          label="Go"
+                          onclick={passdata}
+                          class="slds-m-right_x-small">
+        </lightning-button>
+    </lightning-card>
+    <lightning-card>
+        <div class="slds-wrap slds-grid">
+            <div class="slds-col slds-size_6-of-12 slds-p-horizontal--small slds-m-bottom--medium">
+                <lightning-input label="Keyword Search"
+                                class="strong-text"
+                                placeholder="ex: River, Outfitter, Species, etc..">
+                </lightning-input>
+            </div>
+        </div>
+        <lightning-button variant="brand"
+                          label="Go"
+                          onclick={passdata}
+                          class="slds-m-right_x-small">
+        </lightning-button>
+    </lightning-card>
+</template>
