@@ -1,0 +1,155 @@
+<template>
+    <lightning-card title="Contacts Related To Account In Table Formate" icon-name="custom:custom63">
+     <template if:true={renderTable}>
+            <div class="tableDiv">
+                <div class={tableStyle}>
+                    <table aria-describedby="conatact-list" class="slds-table  slds-table_bordered ">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th class="slds-size_1-of-6 " scope="col">
+                    <div class="slds-truncate " title="First Name">First Name</div>
+                </th>
+                <th class="slds-size_1-of-6 " scope="col">
+                    <div class="slds-truncate " title="Last Name">Last Name</div>
+                </th>
+                <th class="slds-size_1-of-6 " scope="col">
+                    <div class="slds-truncate " title="Email">Email</div>
+                </th>
+                <th class="slds-size_1-of-6" scope="col">
+                    <div class="slds-truncate " title="Phone">Phone
+                    </div>
+                </th>
+                <th class="slds-size_1-of-6" scope="col">
+                    <div class="slds-truncate " title="Mobile">Mobile
+                    </div>
+                </th>
+                <th class="slds-size_1-of-6" scope="col">
+                    <div class="slds-truncate " title="edit">edit</div>
+                </th>
+                <th class="slds-size_1-of-6" scope="col">
+                    <div class="slds-truncate " title="delete">delete</div>
+                </th>
+            </tr>
+        </thead>
+       <tbody >
+        <template for:each={contactList} for:item="item" for:index="indexVar">
+            <tr key={item.Id} class="slds-hint-parent" >
+                <td class="slds-size_1-of-6">
+                    <template if:false={item.isEdit}>
+                        {item.FirstName}
+                    </template>
+                   <template if:true={item.isEdit}>
+                        <lightning-input key={item.key}
+                        data-id={item.Id}
+                        name="input2"
+                        label="Name"
+                        value={item.FirstName}
+                        onchange={update}
+                        variant="label-hidden" >
+                        </lightning-input>
+                    </template>
+                </td>
+                <td class="slds-size_1-of-6">
+                    <template if:false={item.isEdit}>
+                        {item.LastName}
+                    </template>
+                   <template if:true={item.isEdit}>
+                        <lightning-input key={item.key}
+                        data-id={item.Id}
+                        name="input2"
+                        label="Name"
+                        value={item.LastName}
+                        onchange={update}
+                        variant="label-hidden" >
+                        </lightning-input>
+                   </template> 
+                </td>
+                <td class="slds-size_1-of-6">
+                    <template if:false={item.isEdit}>
+                        {item.Email}
+                    </template>
+                   <template if:true={item.isEdit}>
+                        <lightning-input key={item.key}
+                        data-id={item.Id}
+                        name="input2"
+                        label="Name"
+                        value={item.Email}
+                        onchange={update}
+                        variant="label-hidden" >
+                        </lightning-input>
+                   </template>
+                </td>
+                <td class="slds-size_1-of-6">
+                    <template if:false={item.isEdit}>
+                        {item.Phone}
+                    </template>
+                    <template if:true={item.isEdit}>
+                        <lightning-input key={item.key}
+                        data-id={item.Id}
+                        name="input2"
+                        label="Name"
+                        value={item.Phone}
+                        onchange={update}
+                        variant="label-hidden">
+                        </lightning-input>
+                    </template>
+                </td>
+                <td class="slds-size_1-of-6">
+                    <template if:false={item.isEdit}>
+                        {item.mobile}
+                    </template>
+                    <template if:true={item.isEdit}>
+                        <lightning-input key={item.key}
+                        data-id={item.Id}
+                        name="input2"
+                        label="Name"
+                        value={item.mobile}
+                        onchange={update}
+                        variant="label-hidden">
+                        </lightning-input>
+                    </template>
+                </td>
+                <td  class="slds-size_1-of-6">
+                    <lightning-button-icon 
+                    data-recid={item.Id}
+                    onclick={editContact}
+                    icon-name="utility:edit"  
+                    variant="bare"
+                    alternative-text="edit">
+                    </lightning-button-icon>
+                </td>
+                 <td class="slds-size_1-of-6">
+                    <lightning-button-icon
+                    data-recid={item.Id}
+                    icon-name="utility:delete"    
+                    variant="bare"
+                    alternative-text="Delete" 
+                    onclick={deleteContact} 
+                    class="slds-m-left_xx-small"
+                    title="Delete">
+                    </lightning-button-icon>
+                   
+                </td>
+                <td>
+               
+            </td>
+            </tr>
+            
+        </template>
+        
+        </tbody>
+    </table>
+</div>
+</div>
+        </template>
+        <lightning-button if:true={field}
+        icon-name="utility:save"    
+        variant="button"
+        alternative-text="save" 
+        onclick={saverecord} 
+        class="slds-m-middle_xx-small"
+        title="save">
+        </lightning-button>
+    </lightning-card>
+
+</template>

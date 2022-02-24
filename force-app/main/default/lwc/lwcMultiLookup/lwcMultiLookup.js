@@ -1,5 +1,6 @@
 import { LightningElement,api,track } from 'lwc';
 import getResults from '@salesforce/apex/lwcMultiLookupController.getResults';
+import SystemModstamp from '@salesforce/schema/Account.SystemModstamp';
 
 export default class LwcMultiLookup extends LightningElement {
     @api objectName = 'Account';
@@ -19,6 +20,7 @@ export default class LwcMultiLookup extends LightningElement {
         var selectRecId = [];
         for(let i = 0; i < this.selectedRecords.length; i++){
             selectRecId.push(this.selectedRecords[i].recId);
+            System.debug("the records : "+selectRecId);
         }
         this.LoadingText = true;
         getResults({ ObjectName: this.objectName, fieldName: this.fieldName, value: currentText, selectedRecId : selectRecId })
@@ -59,12 +61,12 @@ export default class LwcMultiLookup extends LightningElement {
         let selRecords = this.selectedRecords;
 		this.template.querySelectorAll('lightning-input').forEach(each => {
             each.value = '';
+            console.log('-------------&' ,JSON.stringify(selectName));
         });
         const selectedEvent = new CustomEvent('selected', { detail: {selRecords}, });
         // Dispatches the event.
         this.dispatchEvent(selectedEvent);
     }
-
     removeRecord (event){
         let selectRecId = [];
         for(let i = 0; i < this.selectedRecords.length; i++){

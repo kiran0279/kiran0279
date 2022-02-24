@@ -1,0 +1,15 @@
+<!--
+  @description       : 
+  @author            : Anup Kaage
+  @group             : 
+  @last modified on  : 02-16-2022
+  @last modified by  : Anup Kaage
+-->
+
+<template>
+    <div class="slds-box slds-p-top_small" style="background-color: white;">
+        <lightning-record-edit-form object-api-name="Account" id="createAccountForm" >
+            <lightning-input-field field-name="ParentId" variant="label-hidden" onchange={handleAccountSelection} > </lightning-input-field>
+        </lightning-record-edit-form>
+    </div>
+</template>

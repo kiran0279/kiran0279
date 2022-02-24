@@ -1,0 +1,8 @@
+<apex:page controller="apex">
+    <apex:form >
+      <apex:selectList value="{!selectedAccId}" size="1">
+                <apex:selectOptions value="{!AccountNames}"/>
+                <apex:actionSupport event="onchange" />
+      </apex:selectList>
+  </apex:form>
+</apex:page>
